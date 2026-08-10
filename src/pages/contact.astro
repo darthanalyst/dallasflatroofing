@@ -1,0 +1,69 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const schema = [breadcrumb([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }])];
+---
+<Base
+  title="Contact | Flat Roofing in Dallas, TX"
+  description="Call for flat roofing in Dallas, TX. Reach a local flat-roof contractor for leak repair, replacement, coatings, and commercial roofs. Upfront pricing."
+  path="/contact/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / Contact</div></div>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">Contact</span>
+        <h1>Call for <em>Flat Roofing</em> in Dallas</h1>
+        <p class="lead">The fastest way to get a flat roof handled is a phone call. Describe your roof and what it is doing, and a local flat-roof contractor gives you upfront pricing, with no obligation.</p>
+        <div class="hero-cta">
+          <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+          <span class="tapline">{site.hoursShort}</span>
+        </div>
+        <ul class="creds">
+          <li><svg><use href="#i-pin"/></svg> Dallas & the DFW metroplex</li>
+          <li><svg><use href="#i-clock"/></svg> {site.hoursShort}</li>
+        </ul>
+      </div>
+      <div class="hero-art">
+        <img src="/images/commercial-flat-roofing.jpg" width="800" height="600" alt="Call a local flat-roof contractor for flat roofing in Dallas, Texas" />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap feature">
+      <div>
+        <span class="kicker">Before you call</span>
+        <h2>What to Have Ready</h2>
+        <p>A few details help a local flat-roof contractor size up the roof quickly and give you accurate, upfront pricing over the phone:</p>
+        <ul class="checks">
+          <li>What the roof is doing: a leak, ponding water, or an aging membrane</li>
+          <li>The roof type if you know it: TPO, EPDM, PVC, modified bitumen, or built-up</li>
+          <li>Whether it is a home, a commercial building, or an addition</li>
+          <li>Your area or neighborhood in Dallas or DFW</li>
+          <li>Whether you want a repair, a coating, or a full replacement</li>
+        </ul>
+        <p>Not sure what system you have? That is fine. Describe the building and a local flat-roof contractor will help sort it out.</p>
+      </div>
+      <div class="panel">
+        <h3>Call Now</h3>
+        <p>Leak repair, replacement, coatings, TPO, EPDM, PVC, modified bitumen, built-up, and commercial flat roofs. A local flat-roof contractor handles all of it across Dallas and DFW.</p>
+        <a class="btn btn-call" href={site.phoneHref} style="width:100%;justify-content:center;margin-top:6px"><svg><use href="#i-phone"/></svg> {site.phone}</a>
+        <p style="margin-top:14px;font-size:.9rem;color:#9FBBD2">{site.hoursShort}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Get Your Flat Roof Handled</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Dallas, TX · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>

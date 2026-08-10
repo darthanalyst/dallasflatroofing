@@ -1,0 +1,103 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, serviceNav, areaImages } from "../data/site.js";
+import { serviceNode, breadcrumb, faqNode } from "../lib/schema.js";
+const { area } = Astro.props;
+const path = `/${area.slug}/`;
+const heroImg = area.img || areaImages[area.slug] || "/images/hero.jpg";
+const schema = [
+  serviceNode({ name: `Flat Roofing in ${area.city}`, serviceType: "Flat roofing", description: area.metaDesc, path, cities: [area.city] }),
+  breadcrumb([
+    { name: "Home", path: "/" },
+    { name: "Service Areas", path: "/service-areas/" },
+    { name: area.city, path },
+  ]),
+];
+if (area.faqs && area.faqs.length) schema.push(faqNode(area.faqs));
+---
+<Base title={area.metaTitle} description={area.metaDesc} path={path}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / <a href="/service-areas/">Service Areas</a> / {area.city}</div></div>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker"><svg style="width:15px;height:15px;vertical-align:-2px;color:var(--gold)"><use href="#i-pin"/></svg> {area.city}, {site.region}</span>
+        <h1>Flat Roofing in {area.city}, {site.region}</h1>
+        <p class="lead">{area.lead}</p>
+        <div class="hero-cta">
+          <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+          <span class="tapline">Upfront pricing · No obligation · {site.hoursShort}</span>
+        </div>
+        <ul class="creds">
+          <li><svg><use href="#i-pin"/></svg> Serving {area.city} & nearby</li>
+          <li><svg><use href="#i-roof"/></svg> Flat & low-slope roofs only</li>
+          <li><svg><use href="#i-check"/></svg> Repair, coat, or replace</li>
+        </ul>
+      </div>
+      <div class="hero-art">
+        <img src={heroImg} width="800" height="600" alt={`Flat and low-slope roofs in ${area.city}, ${site.region} served by a local flat-roof contractor`} />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prose">
+      {area.intro.map((p) => <p set:html={p} />)}
+      <h2>{area.localHead}</h2>
+      {area.local.map((p) => <p set:html={p} />)}
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Services</span><h2>Flat Roof Services in {area.city}</h2><p>The full range of flat-roof work, available across {area.city} and the DFW metroplex.</p></div>
+      <div class="svc-rows">
+        {serviceNav.map((s) => (
+          <a class="svc-row" href={`/${s.slug}/`}>
+            <img src={s.img} width="360" height="172" alt={`${s.label} in ${area.city}, TX`} />
+            <span><h3>{s.label}</h3><span class="more">View service →</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap feature">
+      <div>
+        <span class="kicker">Why call a local flat-roof contractor</span>
+        <h2>{area.whyHead}</h2>
+        {area.why.map((p) => <p set:html={p} />)}
+      </div>
+      <div class="panel">
+        <h3>Flat Roof Help in {area.city}</h3>
+        <p>Tell a local flat-roof contractor about your roof and get upfront pricing. No obligation.</p>
+        <a class="btn btn-call" href={site.phoneHref} style="width:100%;justify-content:center;margin-top:6px"><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  {area.faqs && area.faqs.length > 0 && (
+    <section class="bg-paper">
+      <div class="wrap" style="max-width:820px">
+        <div class="section-head"><span class="kicker">FAQ</span><h2>{area.city} Flat Roofing Questions</h2></div>
+        <div class="faq">
+          {area.faqs.map((f, i) => (
+            <details open={i === 0}><summary>{f.q}</summary><div class="ans"><p>{f.a}</p></div></details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Flat Roofing in {area.city}</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,76 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, serviceNav } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const schema = [breadcrumb([{ name: "Home", path: "/" }, { name: "Services", path: "/services/" }])];
+---
+<Base
+  title="Flat Roof Services in Dallas, TX | Repair & More"
+  description="Flat roof services in Dallas, TX: repair, replacement, leak repair, TPO, EPDM, PVC, coatings, and commercial. A local flat-roof contractor handles it all."
+  path="/services/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / Services</div></div>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">Dallas, TX · Services</span>
+        <h1>Flat Roof Services in <em>Dallas</em></h1>
+        <p class="lead">From leak repair and coatings to full low-slope replacement, a local flat-roof contractor handles every flat and low-slope roof system across Dallas and DFW. Pick your service below.</p>
+        <div class="hero-cta">
+          <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+          <span class="tapline">Upfront pricing · No obligation · {site.hoursShort}</span>
+        </div>
+        <ul class="creds">
+          <li><svg><use href="#i-pin"/></svg> Dallas & the DFW metroplex</li>
+          <li><svg><use href="#i-roof"/></svg> Flat & low-slope roofs only</li>
+          <li><svg><use href="#i-check"/></svg> Inspect, price, repair</li>
+        </ul>
+      </div>
+      <div class="hero-art">
+        <img src="/images/work-crew.jpg" width="800" height="600" alt="A local flat-roof contractor crew working on a low-slope commercial roof in Dallas" />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">What we handle</span>
+        <h2>Every Flat Roof System</h2>
+        <p>Each service starts with finding the real problem, then upfront pricing, then a fix matched to your roof. Tap any service for the full breakdown, or call and describe what your roof is doing.</p>
+      </div>
+      <div class="svc-rows">
+        {serviceNav.map((s) => (
+          <a class="svc-row" href={`/${s.slug}/`}>
+            <img src={s.img} width="360" height="172" alt={`${s.label} in Dallas, TX`} />
+            <span>
+              <h3>{s.label}</h3>
+              <span class="more">View service →</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap prose">
+      <span class="kicker">How to choose</span>
+      <h2>Not Sure Which Service You Need?</h2>
+      <p>Most flat-roof problems in Dallas start with water. If you are seeing a stain on a ceiling or a drip after a storm, start with <a href="/flat-roof-leak-repair-in-dallas/">flat roof leak repair</a>, which traces the water back to the real entry point. If the membrane is aging but still sound and mostly suffering from sun and slow drainage, a reflective <a href="/flat-roof-coatings-in-dallas/">flat roof coating</a> can add years without a tear-off. When leaks are widespread and the insulation is wet, a full <a href="/flat-roof-replacement-in-dallas/">flat roof replacement</a> is usually the smarter long-term move.</p>
+      <p>Choosing a membrane is the other common question. <a href="/tpo-roofing-in-dallas/">TPO</a> and <a href="/pvc-roofing-in-dallas/">PVC</a> are reflective, heat-welded single-ply systems that suit most commercial and modern residential flat roofs, with PVC leading where rooftop grease is a factor. <a href="/epdm-roofing-in-dallas/">EPDM</a> is a durable rubber membrane for buildings that value flexibility, while <a href="/modified-bitumen-roofing-in-dallas/">modified bitumen</a> and <a href="/built-up-roofing-in-dallas/">built-up roofing</a> serve older commercial stock. If you are not sure, a <a href="/flat-roof-inspection-in-dallas/">flat roof inspection</a> documents the roof's real condition, and a local flat-roof contractor gives you upfront pricing with no obligation. For larger buildings, see <a href="/commercial-flat-roofing-in-dallas/">commercial flat roofing</a>.</p>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Talk to a Local Flat-Roof Contractor</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Dallas, TX · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,53 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const schema = [breadcrumb([{ name: "Home", path: "/" }, { name: "About", path: "/about/" }])];
+---
+<Base
+  title="About Dallas Flat Roofing | Local Flat-Roof Help"
+  description="Dallas Flat Roofing helps property owners across DFW get flat and low-slope roofs handled by an experienced local flat-roof contractor. Learn how it works."
+  path="/about/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / About</div></div>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">About</span>
+        <h1>Local Flat Roof Help for <em>Dallas</em></h1>
+        <p class="lead">Dallas Flat Roofing makes it simple to get a flat or low-slope roof handled by an experienced local flat-roof contractor who knows North Texas buildings and weather.</p>
+        <div class="hero-cta">
+          <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+          <span class="tapline">Upfront pricing · No obligation · {site.hoursShort}</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="/images/work-membrane.jpg" width="800" height="600" alt="A local flat-roof contractor installing single-ply membrane on a Dallas building" />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prose">
+      <span class="kicker">What we do</span>
+      <h2>Flat Roofing Made Simple</h2>
+      <p>Flat and low-slope roofs are everywhere in Dallas, on Downtown commercial blocks, Deep Ellum warehouses, Uptown mid-rises, and the modern homes and additions across Lakewood, Oak Cliff, and the M Streets. They also fail differently than steep roofs, because water sits on them instead of running off. Dallas Flat Roofing exists to make one thing easy: getting your flat roof in front of an experienced local flat-roof contractor who can find the real problem, price it honestly, and fix it right.</p>
+      <p>The work itself is done by a local flat-roof contractor who knows the area, its building stock, and the North Texas conditions that wear flat roofs down. That local knowledge matters. Intense Texas sun and UV bake a membrane, daily thermal cycling flexes seams, hail and wind lift flashing, and poor drainage leaves ponding water that quietly destroys a roof from above. Treating a flat roof for how it actually fails here is what separates a lasting fix from a patch that leaks again after the next storm.</p>
+      <h2>What You Get When You Call</h2>
+      <p>When you call, you describe your roof and what it is doing, and a local flat-roof contractor helps identify the likely problem and what it will take to handle it. You get upfront pricing before any work begins, with no obligation and no pressure to buy more than the roof needs. If a coating or a targeted repair will do the job, that is what gets recommended, not an automatic tear-off.</p>
+      <p>Whether you manage a commercial building with acres of single-ply, run a restaurant with a grease-loaded low-slope roof, or own a home with a flat-roofed addition, the approach is the same: inspect, price, and fix the source. Explore <a href="/services/">all flat roof services</a>, see the <a href="/service-areas/">areas we serve</a>, or read <a href="/how-it-works/">how it works</a>. When you are ready, call and describe your roof for an honest, upfront answer.</p>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Get Flat Roof Help Today</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Dallas, TX · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>

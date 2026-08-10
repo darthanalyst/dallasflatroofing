@@ -1,0 +1,21 @@
+---
+import ServicePage from "../components/ServicePage.astro";
+import AreaPage from "../components/AreaPage.astro";
+import { services } from "../data/services.js";
+import { areas } from "../data/areas.js";
+
+export function getStaticPaths() {
+  const servicePaths = Object.values(services).map((service) => ({
+    params: { slug: service.slug },
+    props: { kind: "service", service },
+  }));
+  const areaPaths = Object.values(areas).map((area) => ({
+    params: { slug: area.slug },
+    props: { kind: "area", area },
+  }));
+  return [...servicePaths, ...areaPaths];
+}
+
+const { kind, service, area } = Astro.props;
+---
+{kind === "service" ? <ServicePage service={service} /> : <AreaPage area={area} />}

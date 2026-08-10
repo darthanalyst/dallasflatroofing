@@ -1,0 +1,80 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site.js";
+import { breadcrumb, faqNode } from "../lib/schema.js";
+const faqs = [
+  { q: "Do I need an inspection before repair?", a: "For anything beyond an obvious surface issue, yes. Because water travels under a flat-roof membrane before it shows up inside, a local flat-roof contractor has to trace the leak to its real source before choosing a fix. Skipping that step is why quick sealant patches keep failing." },
+  { q: "How long before my flat roof stops leaking?", a: "Most localized repairs are done in a single visit once the source is confirmed and the surface is dry. Larger areas, saturated insulation, or multiple failure points take longer, and the contractor explains the scope and pricing upfront." },
+  { q: "Is one repair enough, or should I replace the roof?", a: "It depends on the roof. Isolated damage on a sound membrane calls for a repair, while widespread ponding, wet insulation, or a brittle, end-of-life membrane points to replacement. A local flat-roof contractor gives you the honest trade-off." },
+  { q: "Can you coat my flat roof instead of replacing it?", a: "Often, yes, if the deck and insulation are still dry and the membrane is only weathered. A reflective coating seals the surface and adds years. If moisture has reached the insulation, a coating only traps it, so replacement is the better call." },
+];
+const schema = [breadcrumb([{ name: "Home", path: "/" }, { name: "How It Works", path: "/how-it-works/" }]), faqNode(faqs)];
+---
+<Base
+  title="How Flat Roofing Works | Dallas, TX"
+  description="How flat roofing works in Dallas: inspect, price, repair or replace, and fix drainage. See what to expect when a local flat-roof contractor handles your roof."
+  path="/how-it-works/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / How It Works</div></div>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">The process</span>
+        <h1>How <em>Flat Roofing</em> Works</h1>
+        <p class="lead">Every flat-roof job runs on the same steps, whether it is a leak over a back office or a full low-slope replacement. Here is what to expect when a local flat-roof contractor handles your Dallas roof.</p>
+        <div class="hero-cta">
+          <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+          <span class="tapline">Upfront pricing · No obligation · {site.hoursShort}</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="/images/flat-roof-inspection.jpg" width="800" height="600" alt="A local flat-roof contractor inspecting seams and flashing on a low-slope Dallas roof" />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Four steps</span><h2>Inspect, Price, Fix, Drain</h2></div>
+      <div class="steps">
+        <div class="step"><div class="n">01 / INSPECT</div><h3>Inspect</h3><p>A local flat-roof contractor walks the membrane, seams, flashing, penetrations, and drains, and checks for wet insulation, to find the real source rather than the interior stain.</p></div>
+        <div class="step"><div class="n">02 / PRICE</div><h3>Price Upfront</h3><p>You get a clear read on the roof and upfront pricing before any work begins, with no obligation and no pressure to buy more than the roof needs.</p></div>
+        <div class="step"><div class="n">03 / FIX</div><h3>Repair or Replace</h3><p>The fix is matched to the system: weld a seam, reset flashing, rebuild a pitch pan, coat the field, or plan a full low-slope replacement.</p></div>
+        <div class="step"><div class="n">04 / DRAIN</div><h3>Drain & Protect</h3><p>Drains and scuppers are cleared and slope corrected so water leaves the roof and the repair actually holds through the next storm.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap prose">
+      <span class="kicker">Why this order</span>
+      <h2>Why the Sequence Matters</h2>
+      <p>The reason so many flat roofs keep leaking is that people skip straight to sealant. On a low-slope roof, water enters at a seam, a flashing, or a penetration, then travels sideways under the membrane and along the deck before it drips through a ceiling several feet away. A smear of caulk over the interior stain does nothing to the actual entry point, so the next storm brings the leak right back. The inspection is what turns a temporary patch into a lasting fix, because it finds the real source and the drainage problem behind it.</p>
+      <p>That is why a local flat-roof contractor inspects first, prices second, and only then repairs or replaces. For a <a href="/flat-roof-leak-repair-in-dallas/">leak</a>, that means tracing the water to the seam or flashing that is letting it in. For an aging membrane, it means checking whether a <a href="/flat-roof-coatings-in-dallas/">coating</a> will do or whether the field has failed. For a roof at the end of its life, it means a full <a href="/flat-roof-replacement-in-dallas/">replacement</a> with new insulation, cover board, and membrane. The drainage step closes the loop, because ponding water is both a symptom and a cause on Dallas flat roofs.</p>
+      <p>You get an upfront estimate before any work begins, an honest read on whether you need a repair, a coating, or a replacement, and no pressure to buy more than the roof needs. See <a href="/services/">all flat roof services</a> or call to describe what your roof is doing.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap" style="max-width:820px">
+      <div class="section-head"><span class="kicker">FAQ</span><h2>What to Expect</h2></div>
+      <div class="faq">
+        {faqs.map((f, i) => (
+          <details open={i === 0}><summary>{f.q}</summary><div class="ans"><p>{f.a}</p></div></details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Ready to Get Started?</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Dallas, TX · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>

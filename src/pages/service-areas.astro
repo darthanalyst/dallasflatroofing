@@ -1,0 +1,77 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, areaNav } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const schema = [breadcrumb([{ name: "Home", path: "/" }, { name: "Service Areas", path: "/service-areas/" }])];
+
+// Extra nearby DFW communities covered (list-only, no dedicated page)
+const nearby = [
+  "Mesquite", "Carrollton", "Addison", "Farmers Branch",
+  "Grand Prairie", "Rowlett", "University Park", "Highland Park",
+  "Duncanville", "DeSoto", "Cedar Hill", "Balch Springs",
+];
+---
+<Base
+  title="Flat Roofing Service Areas | Dallas & DFW, TX"
+  description="Flat roofing across Dallas and DFW: Downtown, Oak Cliff, Uptown, Lakewood, Plano, Richardson, Garland, and Irving. Call a local flat-roof contractor."
+  path="/service-areas/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / Service Areas</div></div>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">Service Areas · Dallas & DFW</span>
+        <h1>Flat Roofing Across <em>Dallas & DFW</em></h1>
+        <p class="lead">Based in Dallas and serving the flat and low-slope roofs of the wider metroplex. A local flat-roof contractor covers the areas below, plus the communities in between.</p>
+        <div class="hero-cta">
+          <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+          <span class="tapline">Upfront pricing · No obligation · {site.hoursShort}</span>
+        </div>
+        <ul class="creds">
+          <li><svg><use href="#i-pin"/></svg> Dallas & 8 nearby areas</li>
+          <li><svg><use href="#i-building"/></svg> Commercial, industrial & residential</li>
+        </ul>
+      </div>
+      <div class="hero-art">
+        <img src="/images/dallas-skyline.jpg" width="800" height="600" alt="The Downtown Dallas, TX skyline, served by a local flat-roof contractor" />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Where we work</span>
+        <h2>Areas We Serve</h2>
+        <p>Dedicated flat roofing pages for each area, with the local building stock and the flat-roof pressures each one faces.</p>
+      </div>
+      <div class="area-grid">
+        {areaNav.map((a) => (
+          <div class="area-card"><h3>{a.label.replace(', TX','')}</h3><p>Flat roof repair, replacement, and coatings across {a.label.replace(', TX','')} and nearby.</p><a class="more" href={`/${a.slug}/`}>{a.label.replace(', TX','')} flat roofing →</a></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Full coverage</span><h2>Communities Covered</h2><p>A local flat-roof contractor also serves these DFW communities. Do not see yours? Call and ask.</p></div>
+      <div class="citylist">
+        {areaNav.map((a) => <a href={`/${a.slug}/`}><svg><use href="#i-pin"/></svg> {a.label.replace(', TX','')}</a>)}
+        {nearby.map((n) => <a href={site.phoneHref}><svg><use href="#i-pin"/></svg> {n}</a>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Flat Roofing Near You</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Dallas & DFW · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>
