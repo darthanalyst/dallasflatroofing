@@ -16,8 +16,8 @@ const px = (id) =>
 // filename -> source URL
 const IMAGES = {
   // brand assets (served at /images/logo.png and /images/favicon.png)
-  "logo.png": "https://files.catbox.moe/r6cgi1.png",
-  "favicon.png": "https://files.catbox.moe/c2pypp.png",
+  "logo.png": "https://raw.githubusercontent.com/darthanalyst/dallasflatroofing/bfa55043f2628f05760b1eda0b5be073dce56618/brand/logo.png",
+  "favicon.png": "https://raw.githubusercontent.com/darthanalyst/dallasflatroofing/bfa55043f2628f05760b1eda0b5be073dce56618/brand/favicon.png",
 
   // hero + social
   "hero.jpg": "https://images.unsplash.com/photo-1713544123580-12096cc9eb12?w=1400&q=80&auto=format&fit=crop",
