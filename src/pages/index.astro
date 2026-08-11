@@ -16,6 +16,7 @@ const faqs = [
   title="Flat Roofing in Dallas, TX | Flat Roof Repair & More"
   description="Flat roof repair, replacement, and coatings in Dallas, TX. A local flat-roof contractor handles TPO, EPDM, PVC, and more. Upfront pricing. Call 000-000-0000."
   path="/"
+  transparentHeader={true}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify([itemListNode(serviceNav), faqNode(faqs)])} />
 
@@ -40,8 +41,41 @@ const faqs = [
     </div>
   </section>
 
-  <section class="catband" style="padding-top:0;padding-bottom:0">
+  <!-- Value props (dark editorial band) -->
+  <section class="bg-ink">
     <div class="wrap">
+      <div class="section-head center">
+        <span class="kicker">Why Dallas property owners call</span>
+        <h2>Flat Roofing, Done Right in Dallas</h2>
+      </div>
+      <div class="assure">
+        <div class="assure-card">
+          <div class="ic"><svg><use href="#i-roof"/></svg></div>
+          <h3>Flat Roofs Are All We Do</h3>
+          <p>Low-slope roofing is its own trade, with membrane welding, tapered insulation, flashing, and drainage that a general roofer may not handle. A local flat-roof contractor works on flat and low-slope roofs, not shingles.</p>
+        </div>
+        <div class="assure-card">
+          <div class="ic"><svg><use href="#i-pin"/></svg></div>
+          <h3>Dallas-Based Local Roofers</h3>
+          <p>Texas sun, ponding water, and North Texas hail all hit flat roofs hard. A local roofer who knows Dallas buildings, from Deep Ellum warehouses to Uptown mid-rises, treats the roof for how it actually fails here.</p>
+        </div>
+        <div class="assure-card">
+          <div class="ic"><svg><use href="#i-check"/></svg></div>
+          <h3>Upfront and No Pressure</h3>
+          <p>You get an honest read on the roof and upfront pricing before any work, with no obligation. If a coating or a repair will do, a local flat-roof contractor says so instead of pushing a full replacement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured service tracks -->
+  <section class="catband">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="kicker">Where to start</span>
+        <h2>Our Flat Roof Services</h2>
+        <p>Repair, replacement, or a full commercial low-slope roof — pick a track, or call and describe what your roof is doing.</p>
+      </div>
       <div class="cat-cards">
         {categoryCards.map((c) => (
           <a class="cat-card" href={`/${c.slug}/`}>
@@ -56,7 +90,8 @@ const faqs = [
     </div>
   </section>
 
-  <section>
+  <!-- Signature: systems tabbed panel -->
+  <section class="bg-paper">
     <div class="wrap">
       <div class="section-head center">
         <span class="kicker">What we install & repair</span>
@@ -83,7 +118,7 @@ const faqs = [
                   {t.tiles.map((tile) => (
                     <a class="systab-tile" href={`/${tile.slug}/`}>
                       <img src={tile.img} width="240" height="150" alt={`${tile.label} in Dallas, TX`} />
-                      <span>{tile.label} →</span>
+                      <span>{tile.label} <span class="arw">→</span></span>
                     </a>
                   ))}
                 </div>
@@ -95,7 +130,8 @@ const faqs = [
     </div>
   </section>
 
-  <section class="bg-paper">
+  <!-- Full service list -->
+  <section>
     <div class="wrap">
       <div class="section-head">
         <span class="kicker">Flat roof services</span>
@@ -116,6 +152,21 @@ const faqs = [
     </div>
   </section>
 
+  <!-- Process -->
+  <section class="bg-paper">
+    <div class="wrap">
+      <div class="section-head center"><span class="kicker">Guiding you step by step</span><h2>How a Dallas Flat Roof Job Works</h2></div>
+      <div class="steps">
+        <div class="step"><div class="n">01 / Inspect</div><h3>Inspect</h3><p>A local flat-roof contractor walks the membrane, seams, flashing, penetrations, and drains to find the real source, not just the stain inside.</p></div>
+        <div class="step"><div class="n">02 / Price</div><h3>Price Upfront</h3><p>You get a clear read on the roof and upfront pricing before any work, with no obligation and no pressure to over-buy.</p></div>
+        <div class="step"><div class="n">03 / Fix</div><h3>Repair or Replace</h3><p>The fix is matched to the system: weld a seam, reset flashing, coat the field, or plan a full low-slope replacement.</p></div>
+        <div class="step"><div class="n">04 / Drain</div><h3>Drain & Protect</h3><p>Drains and scuppers are cleared and slope corrected so water leaves the roof and the fix actually holds.</p></div>
+      </div>
+      <div style="margin-top:34px;text-align:center"><a class="btn btn-outline" href="/how-it-works/">See how it works in detail</a></div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
   <section>
     <div class="wrap">
       <div class="section-head center"><span class="kicker">Recent work</span><h2>Flat Roof Work Across Dallas</h2><p>Single-ply membrane, seam welding, drainage, coatings, and commercial low-slope roofs handled by a local flat-roof contractor.</p></div>
@@ -127,33 +178,8 @@ const faqs = [
     </div>
   </section>
 
+  <!-- Long-form prose -->
   <section class="bg-paper">
-    <div class="wrap">
-      <div class="section-head center">
-        <span class="kicker">Why call</span>
-        <h2>Flat Roofing, Done Right in Dallas</h2>
-      </div>
-      <div class="assure">
-        <div class="assure-card">
-          <div class="ic"><svg><use href="#i-roof"/></svg></div>
-          <h3>Flat Roofs Are All We Do</h3>
-          <p>Low-slope roofing is its own trade, with membrane welding, tapered insulation, flashing, and drainage that a general roofer may not handle. A local flat-roof contractor works on flat and low-slope roofs, not shingles.</p>
-        </div>
-        <div class="assure-card">
-          <div class="ic"><svg><use href="#i-pin"/></svg></div>
-          <h3>Dallas-Based Local Roofers</h3>
-          <p>Texas sun, ponding water, and North Texas hail all hit flat roofs hard. A local roofer who knows Dallas buildings, from Deep Ellum warehouses to Uptown mid-rises, treats the roof for how it actually fails here.</p>
-        </div>
-        <div class="assure-card">
-          <div class="ic"><svg><use href="#i-check"/></svg></div>
-          <h3>Upfront and No Pressure</h3>
-          <p>You get an honest read on the roof and upfront pricing before any work, with no obligation. If a coating or a repair will do, a local flat-roof contractor says so instead of pushing a full replacement.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
     <div class="wrap prose">
       <span class="kicker">Flat roofing</span>
       <h2>Flat Roofing Built for Dallas Buildings</h2>
@@ -166,34 +192,23 @@ const faqs = [
     </div>
   </section>
 
-  <section class="bg-paper">
+  <!-- Service areas -->
+  <section>
     <div class="wrap">
-      <div class="section-head"><span class="kicker">Service areas</span><h2>Dallas Areas We Serve</h2><p>Flat roofing across Dallas neighborhoods and the surrounding DFW suburbs.</p></div>
+      <div class="section-head center"><span class="kicker">Service areas</span><h2>Dallas Areas We Serve</h2><p>Flat roofing across Dallas neighborhoods and the surrounding DFW suburbs.</p></div>
       <div class="area-grid">
         {areaNav.map((a) => (
           <div class="area-card"><h3>{a.label.replace(', TX','')}</h3><p>Flat roof repair, replacement, and coatings across {a.label.replace(', TX','')} and nearby.</p><a class="more" href={`/${a.slug}/`}>{a.label.replace(', TX','')} flat roofing →</a></div>
         ))}
       </div>
-      <div style="margin-top:22px"><a class="btn btn-outline" href="/service-areas/">See all service areas</a></div>
+      <div style="margin-top:34px;text-align:center"><a class="btn btn-outline" href="/service-areas/">See all service areas</a></div>
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <div class="section-head"><span class="kicker">The process</span><h2>How a Dallas Flat Roof Job Works</h2></div>
-      <div class="steps">
-        <div class="step"><div class="n">01 / INSPECT</div><h3>Inspect</h3><p>A local flat-roof contractor walks the membrane, seams, flashing, penetrations, and drains to find the real source, not just the stain inside.</p></div>
-        <div class="step"><div class="n">02 / PRICE</div><h3>Price Upfront</h3><p>You get a clear read on the roof and upfront pricing before any work, with no obligation and no pressure to over-buy.</p></div>
-        <div class="step"><div class="n">03 / FIX</div><h3>Repair or Replace</h3><p>The fix is matched to the system: weld a seam, reset flashing, coat the field, or plan a full low-slope replacement.</p></div>
-        <div class="step"><div class="n">04 / DRAIN</div><h3>Drain & Protect</h3><p>Drains and scuppers are cleared and slope corrected so water leaves the roof and the fix actually holds.</p></div>
-      </div>
-      <div style="margin-top:28px"><a class="btn btn-outline" href="/how-it-works/">See how it works in detail</a></div>
-    </div>
-  </section>
-
+  <!-- FAQ -->
   <section class="bg-paper">
-    <div class="wrap" style="max-width:820px">
-      <div class="section-head"><span class="kicker">FAQ</span><h2>Dallas Flat Roofing Questions</h2></div>
+    <div class="wrap" style="max-width:860px">
+      <div class="section-head center"><span class="kicker">FAQ</span><h2>Dallas Flat Roofing Questions</h2></div>
       <div class="faq">
         {faqs.map((f, i) => (
           <details open={i === 0}><summary>{f.q}</summary><div class="ans"><p>{f.a}</p></div></details>
@@ -207,7 +222,7 @@ const faqs = [
       <h2>Get Your Flat Roof Handled</h2>
       <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
       <p>{site.hoursShort} · Dallas, TX · upfront pricing, no obligation</p>
-      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+      <div style="margin-top:22px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
     </div>
   </section>
 </Base>

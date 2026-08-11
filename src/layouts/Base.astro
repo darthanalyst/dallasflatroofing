@@ -1,7 +1,7 @@
 ---
 import { site, serviceNav, areaNav } from "../data/site.js";
 import { orgNode, websiteNode } from "../lib/schema.js";
-const { title, description, path = "/", canonical } = Astro.props;
+const { title, description, path = "/", canonical, transparentHeader = false } = Astro.props;
 const canon = canonical || site.url + path;
 const sitewide = [orgNode(), websiteNode()];
 const year = new Date().getFullYear();
@@ -26,7 +26,7 @@ const year = new Date().getFullYear();
 <script type="application/ld+json" set:html={JSON.stringify(sitewide)} />
 <slot name="head" />
 </head>
-<body>
+<body class={transparentHeader ? "home" : ""}>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
@@ -59,15 +59,16 @@ const year = new Date().getFullYear();
   <nav class="nav wrap">
     <a href="/" class="brand" aria-label={site.brand + " home"}>
       <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
-        <rect width="64" height="64" rx="14" fill="#1668B0"/>
-        <g fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 30 32 20l20 10"/>
-          <path d="M16 30v16h32V30"/>
+        <rect width="64" height="64" rx="6" fill="#b1852f"/>
+        <rect x="2.5" y="2.5" width="59" height="59" rx="4" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/>
+        <g fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 31 32 20l20 11"/>
+          <path d="M16 31v15h32V31"/>
           <path d="M28 46v-9h8v9"/>
         </g>
-        <rect x="14" y="26" width="36" height="4" rx="2" fill="#F6B21B"/>
+        <rect x="14" y="27" width="36" height="3.4" rx="1.7" fill="#232120"/>
       </svg>
-      <span class="wordmark">Dallas Flat<br/><b>Roofing</b><small>Local Flat-Roof Contractors · TX</small></span>
+      <span class="wordmark">Dallas Flat <b>Roofing</b><small>Local Flat-Roof Contractors · TX</small></span>
     </a>
     <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')"><svg><use href="#i-menu"/></svg></button>
     <div class="nav-links" id="nav">
@@ -100,10 +101,20 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div>
-      <h4>{site.brand}</h4>
-      <p>Flat roof repair, replacement, and coatings across Dallas and the DFW metroplex. A local flat-roof contractor handles TPO, EPDM, PVC, modified bitumen, and built-up roofs, from leak repair to full low-slope replacement.</p>
+      <div class="footer-brand-mark">
+        <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="6" fill="#b1852f"/>
+          <g fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 31 32 20l20 11"/><path d="M16 31v15h32V31"/><path d="M28 46v-9h8v9"/>
+          </g>
+          <rect x="14" y="27" width="36" height="3.4" rx="1.7" fill="#232120"/>
+        </svg>
+        <span class="wordmark">Dallas Flat <b>Roofing</b><small>Flat-Roof Specialists · DFW</small></span>
+      </div>
+      <p>Flat and low-slope roofing across Dallas and the DFW metroplex — TPO, EPDM, PVC, modified bitumen, and built-up, from leak repair to full replacement.</p>
       <a class="footer-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> {site.phone}</a>
-      <p style="margin-top:14px;font-size:.82rem;color:#7f97a9">{site.hoursShort}</p>
+      <p style="margin-top:4px">{site.hoursShort} · {site.city}, {site.region}</p>
+      <a class="btn btn-outline" href="/contact/">Contact Us</a>
     </div>
     <div>
       <h4>Flat Roof Services</h4>
@@ -112,10 +123,16 @@ const year = new Date().getFullYear();
       </ul>
     </div>
     <div>
-      <h4>Areas & Company</h4>
+      <h4>Service Areas</h4>
       <ul>
         <li><a href="/service-areas/">All Service Areas</a></li>
         {areaNav.map((a) => <li><a href={`/${a.slug}/`}>{a.label}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/services/">All Services</a></li>
         <li><a href="/how-it-works/">How It Works</a></li>
         <li><a href="/about/">About</a></li>
         <li><a href="/contact/">Contact</a></li>
@@ -130,6 +147,21 @@ const year = new Date().getFullYear();
 </footer>
 
 <a class="mobile-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Tap to Call · {site.phone}</a>
+
+{transparentHeader && (
+  <script is:inline>
+    (function () {
+      var h = document.querySelector('.site-header');
+      if (!h) return;
+      var onScroll = function () {
+        if (window.scrollY > 40) h.classList.add('scrolled');
+        else h.classList.remove('scrolled');
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+)}
 
 </body>
 </html>
