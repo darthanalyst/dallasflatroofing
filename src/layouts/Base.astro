@@ -14,7 +14,8 @@ const year = new Date().getFullYear();
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canon} />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/images/favicon.png" type="image/png" />
+<link rel="apple-touch-icon" href="/images/favicon.png" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:type" content="website" />
@@ -58,16 +59,7 @@ const year = new Date().getFullYear();
 <header class="site-header">
   <nav class="nav wrap">
     <a href="/" class="brand" aria-label={site.brand + " home"}>
-      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
-        <rect width="64" height="64" rx="12" fill="#125ca6"/>
-        <g fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M11 32 32 19l21 13"/>
-          <path d="M16 32v14h32V32"/>
-          <path d="M28 46v-9h8v9"/>
-        </g>
-        <rect x="13" y="28" width="38" height="3.6" rx="1.8" fill="#f26a21"/>
-      </svg>
-      <span class="wordmark">Dallas Flat <b>Roofing</b><small>Local Flat-Roof Contractors · TX</small></span>
+      <img class="brand-logo" src="/images/logo.png" width="760" height="218" alt="Dallas Flat Roofing - local flat-roof contractors, Dallas TX" />
     </a>
     <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')"><svg><use href="#i-menu"/></svg></button>
     <div class="nav-links" id="nav">

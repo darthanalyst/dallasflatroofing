@@ -15,6 +15,10 @@ const px = (id) =>
 
 // filename -> source URL
 const IMAGES = {
+  // brand assets (served at /images/logo.png and /images/favicon.png)
+  "logo.png": "https://files.catbox.moe/r6cgi1.png",
+  "favicon.png": "https://files.catbox.moe/c2pypp.png",
+
   // hero + social
   "hero.jpg": "https://images.unsplash.com/photo-1713544123580-12096cc9eb12?w=1400&q=80&auto=format&fit=crop",
   "og.jpg": px(5391969),

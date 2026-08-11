@@ -113,6 +113,7 @@ section.bg-ink .btn-outline:hover,.hero .btn-outline:hover{background:#fff;color
 
 .brand{display:flex;align-items:center;gap:12px;color:var(--navy);flex:none}
 .brand:hover{text-decoration:none}
+.brand-logo{height:54px;width:auto;display:block}
 .brand .mark{width:46px;height:46px;flex:none}
 .wordmark{font-family:var(--head);font-weight:800;line-height:1;color:var(--navy);font-size:1.5rem;letter-spacing:-.01em;display:block}
 .wordmark b{font-weight:800;color:var(--orange)}
@@ -359,6 +360,7 @@ section.bg-ink .assure-card p{color:var(--muted-d)}
 @media (max-width:860px){
   section{padding:60px 0}
   .nav{min-height:64px}
+  .brand-logo{height:42px}
   .menu-toggle{display:block}
   .nav-links{
     position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;
